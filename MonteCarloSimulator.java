@@ -20,22 +20,7 @@ public class MonteCarloSimulator {
 		return portfolio.getInitMarketValue();
 	}
 	
-	public static double getPercentileInSortedArray(double[] arr, int percentile){
-		
-		int len = arr.length;
-		
-		if (percentile == 100)
-			return arr[len - 1];
-		double index = len*percentile/100.0;
-		
-		if (index % 1 == 0){ //if number is a whole number
-			double index1 = index - 1;
-			return (arr[(int)index1]  + arr[(int)index]) / 2  ;
-		}
-		else
-			return arr[(int)index ];
-			
-	}
+	
 
 	public static void main(String[] args) {
 
@@ -63,24 +48,24 @@ public class MonteCarloSimulator {
 
 		System.out.println("Conservative portfolio:");
 		System.out.println("Median after 20 years: "
-				+ formatter.format(getPercentileInSortedArray(conservativeMarketValues, 50)));
+				+ formatter.format(MathUtils.getPercentileInSortedArray(conservativeMarketValues, 50)));
 		System.out
 				.println("10% best case after 20 year: "
-						+ formatter.format(getPercentileInSortedArray(conservativeMarketValues, 90)));
+						+ formatter.format(MathUtils.getPercentileInSortedArray(conservativeMarketValues, 90)));
 		System.out
 				.println("10% worst case after 20 year: "
-						+ formatter.format(getPercentileInSortedArray(conservativeMarketValues, 10)));
+						+ formatter.format(MathUtils.getPercentileInSortedArray(conservativeMarketValues, 10)));
 
 		System.out.println();
 		System.out.println("Aggressive portfolio: ");
 		System.out.println("Median after 20 years: "
-				+ formatter.format(getPercentileInSortedArray(aggressiveMarketValues,50)));
+				+ formatter.format(MathUtils.getPercentileInSortedArray(aggressiveMarketValues,50)));
 		System.out
 				.println("10% best case after 20 year: "
-						+ formatter.format(getPercentileInSortedArray(aggressiveMarketValues, 90)));
+						+ formatter.format(MathUtils.getPercentileInSortedArray(aggressiveMarketValues, 90)));
 		System.out
 				.println("10% worst case after 20 year: "
-						+ formatter.format(getPercentileInSortedArray(aggressiveMarketValues, 10)));
+						+ formatter.format(MathUtils.getPercentileInSortedArray(aggressiveMarketValues, 10)));
 	}
 
 }
